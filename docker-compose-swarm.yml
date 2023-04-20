@@ -1,0 +1,30 @@
+version: "3"
+services:
+    usuarios:
+        image: app-abc-usuarios
+        ports:
+            - "3001:3001"
+            
+    productos:
+        image: app-abc-productos
+        ports:
+            - "3002:3002"
+            
+    ordenes:
+        image: app-abc-ordenes
+        ports:
+            - "3003:3003"
+            
+    microweb:
+        image: app-abc-microweb
+        ports:
+            - "1080:80"
+            
+    db:
+        image: mysql:5.7
+        ports:
+            - "32000:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+        volumes:
+            - ./db:/docker-entrypoint-initdb.d/:ro
